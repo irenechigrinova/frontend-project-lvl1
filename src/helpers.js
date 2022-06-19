@@ -167,7 +167,7 @@ const setPrimeQuestionData = () => {
 
 export const showResult = (hasError, userName) => {
   if (hasError) {
-    console.log(`Let's try again, ${userName}`);
+    console.log(`Let's try again, ${userName}!`);
   } else {
     console.log(`Congratulations, ${userName}!`);
   }
