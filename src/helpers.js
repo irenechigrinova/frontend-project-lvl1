@@ -153,7 +153,7 @@ const setPrimeQuestionData = () => {
     };
   }
   let isPrime = true;
-  for (let i = 3; i < number; i += 1) {
+  for (let i = 3; i < number; i += 2) {
     if (number % i === 0) {
       isPrime = false;
       break;
