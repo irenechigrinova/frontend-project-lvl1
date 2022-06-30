@@ -1,9 +1,2 @@
-export const GAME_TYPES = {
-  even: 'even',
-  calculator: 'calculator',
-  gcd: 'gcd',
-  progression: 'progression',
-  prime: 'prime',
-};
-
+// eslint-disable-next-line import/prefer-default-export
 export const MAX_AVAILABLE_NUMBER = 101;
