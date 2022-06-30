@@ -5,6 +5,7 @@ import {
   getRandomArbitrary,
   showCorrect,
   showError,
+  showQuestion,
 } from '../helpers.js';
 import {
   MAX_AVAILABLE_NUMBER,
@@ -30,7 +31,7 @@ export default () => {
 
     const number = getRandomArbitrary(0, MAX_AVAILABLE_NUMBER);
     const isEven = number % 2 === 0;
-    console.log(number);
+    showQuestion(number);
 
     const userAnswer = getUserAnswer();
     const answerIsValid = validateAnswer(isEven, userAnswer);

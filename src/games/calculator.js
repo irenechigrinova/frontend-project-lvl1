@@ -6,6 +6,7 @@ import {
   validateCalcAnswer,
   showCorrect,
   showError,
+  showQuestion,
 } from '../helpers.js';
 import {
   MAX_AVAILABLE_NUMBER,
@@ -54,7 +55,7 @@ export default () => {
     counter -= 1;
 
     const { text, result } = setQuestionData();
-    console.log(text);
+    showQuestion(text);
 
     const userAnswer = getUserAnswer();
     const answerIsValid = validateCalcAnswer(result, userAnswer);

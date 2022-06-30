@@ -21,3 +21,7 @@ export const showCorrect = () => {
 export const showError = (wrongAnswer, correctAnswer) => {
   console.log(`"${wrongAnswer}" is wrong answer ;(. Correct answer is "${correctAnswer}"`);
 };
+
+export const showQuestion = (text) => {
+  console.log(`Question: ${text}`);
+};

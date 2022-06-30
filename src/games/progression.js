@@ -6,6 +6,7 @@ import {
   validateCalcAnswer,
   showCorrect,
   showError,
+  showQuestion,
 } from '../helpers.js';
 
 const setQuestionData = () => {
@@ -46,7 +47,7 @@ export default () => {
     counter -= 1;
 
     const { text, result } = setQuestionData();
-    console.log(text);
+    showQuestion(text);
 
     const userAnswer = getUserAnswer();
     const answerIsValid = validateCalcAnswer(result, userAnswer);
