@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import initGame from '../src/index.js';
-import { GAME_TYPES } from '../src/helpers.js';
+import progression from '../src/games/progression.js';
 
-initGame(GAME_TYPES.progression);
+progression();

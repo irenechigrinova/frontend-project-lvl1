@@ -1,3 +1,14 @@
+### Описание проекта
+В проекте содержится ряд математических игр, в которые пользователь может играть через консоль
+
+### Минимальные требования
+- NodeJS >= 16.13.2
+- *NIX OS или WSL для Windows
+
+### Локальный запуск
+- После клонирования необходимо зайти в папку проекта и выполнить npm ci в корневом каталоге
+- Для запуска игры необходимо выполнить команду node bin/your-game.js, где вместо your-game указать файл выбранной игры
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/irenechigrinova/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/irenechigrinova/frontend-project-lvl1/actions)
 

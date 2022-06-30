@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import initGame from '../src/index.js';
-import { GAME_TYPES } from '../src/helpers.js';
+import gcd from '../src/games/gcd.js';
 
-initGame(GAME_TYPES.gcd);
+gcd();
