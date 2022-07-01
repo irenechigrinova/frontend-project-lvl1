@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-import isPrime from '../src/games/is-prime.js';
+import initGame from '../src/index.js';
+import generateIsPrimeData from '../src/games/is-prime.js';
 
-isPrime();
+initGame(generateIsPrimeData);

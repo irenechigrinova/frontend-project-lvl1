@@ -1,31 +1,15 @@
-import greeting from '../cli.js';
-import {
-  getUserAnswer,
-  showResult,
-  getRandomArbitrary,
-  showCorrect,
-  showError,
-  showQuestion,
-} from '../helpers.js';
-import {
-  MAX_AVAILABLE_NUMBER,
-} from '../consts.js';
+import { generateRandomNumber } from '../helpers.js';
 
-const setQuestionData = () => {
-  const number = getRandomArbitrary(1, MAX_AVAILABLE_NUMBER);
+const generateQuestionData = () => {
+  const number = generateRandomNumber(1, 100);
   const isEven = number % 2 === 0;
-  if (number === 1) {
+  if (number === 1 || isEven) {
     return {
-      text: number,
-      isPrime: false,
+      question: number,
+      answer: 'no',
     };
   }
-  if (isEven) {
-    return {
-      text: number,
-      isPrime: false,
-    };
-  }
+
   let isPrime = true;
   for (let i = 3; i < number; i += 2) {
     if (number % i === 0) {
@@ -34,42 +18,13 @@ const setQuestionData = () => {
     }
   }
   return {
-    text: number,
-    isPrime,
+    question: number,
+    answer: isPrime ? 'yes' : 'no',
   };
 };
 
-const validateAnswer = (isPrime, answer) => {
-  const isEvenValid = answer === 'yes' && isPrime;
-  const isNotEvenValid = answer === 'no' && !isPrime;
-  return isEvenValid || isNotEvenValid;
-};
-
-const MAX_ATTEMPTS = 3;
-
-export default () => {
-  const userName = greeting();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-  let counter = MAX_ATTEMPTS;
-  let hasError = false;
-
-  while (counter) {
-    counter -= 1;
-
-    const { text, isPrime } = setQuestionData();
-    showQuestion(text);
-
-    const userAnswer = getUserAnswer();
-    const answerIsValid = validateAnswer(isPrime, userAnswer);
-    if (!answerIsValid) {
-      showError(userAnswer, isPrime ? 'yes' : 'no');
-      counter = 0;
-      hasError = true;
-    } else {
-      showCorrect();
-    }
-  }
-
-  showResult(hasError, userName);
-};
+export default () => ({
+  ruleText: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+  maxAttempts: 3,
+  generateQuestionData,
+});

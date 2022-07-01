@@ -1,26 +1,12 @@
-import greeting from '../cli.js';
-import {
-  getUserAnswer,
-  showResult,
-  getRandomArbitrary,
-  validateCalcAnswer,
-  showCorrect,
-  showError,
-  showQuestion,
-} from '../helpers.js';
-import {
-  MAX_AVAILABLE_NUMBER,
-} from '../consts.js';
-
-const MAX_ATTEMPTS = 3;
+import { generateRandomNumber } from '../helpers.js';
 
 const generateOperation = () => {
   const operations = ['+', '-', '*'];
-  const number = getRandomArbitrary(0, operations.length);
+  const number = generateRandomNumber(0, operations.length - 1);
   return operations[number];
 };
 
-const calculateResult = (num1, num2, operation) => {
+const calculate = (num1, num2, operation) => {
   switch (operation) {
     case '+':
       return num1 + num2;
@@ -33,40 +19,19 @@ const calculateResult = (num1, num2, operation) => {
   }
 };
 
-const setQuestionData = () => {
-  const number1 = getRandomArbitrary(0, MAX_AVAILABLE_NUMBER);
-  const number2 = getRandomArbitrary(0, MAX_AVAILABLE_NUMBER);
+const generateQuestionData = () => {
+  const number1 = generateRandomNumber(0, 100);
+  const number2 = generateRandomNumber(0, 100);
   const operation = generateOperation();
-  const result = calculateResult(number1, number2, operation);
+  const result = calculate(number1, number2, operation);
   return {
-    text: `${number1} ${operation} ${number2}`,
-    result,
+    question: `${number1} ${operation} ${number2}`,
+    answer: String(result),
   };
 };
 
-export default () => {
-  const userName = greeting();
-  console.log('What is the result of the expression?');
-
-  let counter = MAX_ATTEMPTS;
-  let hasError = false;
-
-  while (counter) {
-    counter -= 1;
-
-    const { text, result } = setQuestionData();
-    showQuestion(text);
-
-    const userAnswer = getUserAnswer();
-    const answerIsValid = validateCalcAnswer(result, userAnswer);
-    if (!answerIsValid) {
-      showError(userAnswer, result);
-      counter = 0;
-      hasError = true;
-    } else {
-      showCorrect();
-    }
-  }
-
-  showResult(hasError, userName);
-};
+export default () => ({
+  ruleText: 'What is the result of the expression?',
+  maxAttempts: 3,
+  generateQuestionData,
+});

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-import calculator from '../src/games/calculator.js';
+import initGame from '../src/index.js';
+import generateCalculatorData from '../src/games/calculator.js';
 
-calculator();
+initGame(generateCalculatorData);

@@ -1,20 +1,8 @@
-import greeting from '../cli.js';
-import {
-  getUserAnswer,
-  showResult,
-  getRandomArbitrary,
-  validateCalcAnswer,
-  showCorrect,
-  showError,
-  showQuestion,
-} from '../helpers.js';
-import {
-  MAX_AVAILABLE_NUMBER,
-} from '../consts.js';
+import { generateRandomNumber } from '../helpers.js';
 
-const setQuestionData = () => {
-  const number1 = getRandomArbitrary(1, MAX_AVAILABLE_NUMBER);
-  const number2 = getRandomArbitrary(1, MAX_AVAILABLE_NUMBER);
+const generateQuestionData = () => {
+  const number1 = generateRandomNumber(1, 100);
+  const number2 = generateRandomNumber(1, 100);
   const min = Math.min(number1, number2);
   const max = Math.max(number1, number2);
 
@@ -26,36 +14,13 @@ const setQuestionData = () => {
     }
   }
   return {
-    text: `${min} ${max}`,
-    result: gcd,
+    question: `${min} ${max}`,
+    answer: String(gcd),
   };
 };
 
-const MAX_ATTEMPTS = 3;
-
-export default () => {
-  const userName = greeting();
-  console.log('Find the greatest common divisor of given numbers.');
-
-  let counter = MAX_ATTEMPTS;
-  let hasError = false;
-
-  while (counter) {
-    counter -= 1;
-
-    const { text, result } = setQuestionData();
-    showQuestion(text);
-
-    const userAnswer = getUserAnswer();
-    const answerIsValid = validateCalcAnswer(result, userAnswer);
-    if (!answerIsValid) {
-      showError(userAnswer, result);
-      counter = 0;
-      hasError = true;
-    } else {
-      showCorrect();
-    }
-  }
-
-  showResult(hasError, userName);
-};
+export default () => ({
+  ruleText: 'Find the greatest common divisor of given numbers.',
+  maxAttempts: 3,
+  generateQuestionData,
+});

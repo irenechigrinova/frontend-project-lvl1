@@ -1,26 +1,17 @@
-import greeting from '../cli.js';
-import {
-  getUserAnswer,
-  showResult,
-  getRandomArbitrary,
-  validateCalcAnswer,
-  showCorrect,
-  showError,
-  showQuestion,
-} from '../helpers.js';
+import { generateRandomNumber } from '../helpers.js';
 
-const setQuestionData = () => {
-  const arrayLength = getRandomArbitrary(5, 10);
-  const emptyNumber = getRandomArbitrary(0, arrayLength - 1);
-  const progressionValue = getRandomArbitrary(1, 10);
-  const startingNumber = getRandomArbitrary(1, 100);
+const generateQuestionData = () => {
+  const progressionLength = generateRandomNumber(5, 10);
+  const progressionMissingValue = generateRandomNumber(0, progressionLength - 1);
+  const progressionStep = generateRandomNumber(1, 10);
+  const progressionStart = generateRandomNumber(1, 100);
 
   const result = [];
   let missingNumber;
-  let currentValue = startingNumber;
-  for (let i = 0; i < arrayLength; i += 1) {
-    currentValue = i === 0 ? currentValue : currentValue + progressionValue;
-    if (i === emptyNumber) {
+  let currentValue = progressionStart;
+  for (let i = 0; i < progressionLength; i += 1) {
+    currentValue = i === 0 ? currentValue : currentValue + progressionStep;
+    if (i === progressionMissingValue) {
       result.push('..');
       missingNumber = currentValue;
     } else {
@@ -29,36 +20,13 @@ const setQuestionData = () => {
   }
 
   return {
-    text: result.join(' '),
-    result: missingNumber,
+    question: result.join(' '),
+    answer: String(missingNumber),
   };
 };
 
-const MAX_ATTEMPTS = 3;
-
-export default () => {
-  const userName = greeting();
-  console.log('What number is missing in the progression?');
-
-  let counter = MAX_ATTEMPTS;
-  let hasError = false;
-
-  while (counter) {
-    counter -= 1;
-
-    const { text, result } = setQuestionData();
-    showQuestion(text);
-
-    const userAnswer = getUserAnswer();
-    const answerIsValid = validateCalcAnswer(result, userAnswer);
-    if (!answerIsValid) {
-      showError(userAnswer, result);
-      counter = 0;
-      hasError = true;
-    } else {
-      showCorrect();
-    }
-  }
-
-  showResult(hasError, userName);
-};
+export default () => ({
+  ruleText: 'What number is missing in the progression?',
+  maxAttempts: 3,
+  generateQuestionData,
+});
