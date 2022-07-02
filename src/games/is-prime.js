@@ -1,15 +1,6 @@
-import { generateRandomNumber } from '../helpers.js';
+import { generateRandomNumber, checkIsEven } from '../helpers.js';
 
-const generateQuestionData = () => {
-  const number = generateRandomNumber(1, 100);
-  const isEven = number % 2 === 0;
-  if (number === 1 || isEven) {
-    return {
-      question: number,
-      answer: 'no',
-    };
-  }
-
+const checkIsPrime = (number) => {
   let isPrime = true;
   for (let i = 3; i < number; i += 2) {
     if (number % i === 0) {
@@ -17,9 +8,21 @@ const generateQuestionData = () => {
       break;
     }
   }
+  return isPrime;
+};
+
+const generateQuestionData = () => {
+  const number = generateRandomNumber(1, 100);
+  if (number === 1 || checkIsEven(number)) {
+    return {
+      question: number,
+      answer: 'no',
+    };
+  }
+
   return {
     question: number,
-    answer: isPrime ? 'yes' : 'no',
+    answer: checkIsPrime(number) ? 'yes' : 'no',
   };
 };
 

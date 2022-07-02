@@ -1,10 +1,10 @@
-import { generateRandomNumber } from '../helpers.js';
+import { generateRandomNumber, checkIsEven } from '../helpers.js';
 
 const generateQuestionData = () => {
   const number = generateRandomNumber(0, 100);
   return {
     question: number,
-    answer: number % 2 === 0 ? 'yes' : 'no',
+    answer: checkIsEven(number) ? 'yes' : 'no',
   };
 };
 
