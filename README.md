@@ -12,7 +12,10 @@
 
 ```sh
 # setup
-npm ci
+make install
+
+#lint
+make lint
 
 # run via make
 make brain-even

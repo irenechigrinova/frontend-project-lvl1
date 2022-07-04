@@ -1,10 +1,8 @@
-import helper from '../helpers.js';
+import generateRandomNumber from '../helpers/generate-random-number.js';
 import runGame from '../index.js';
 
 const DESCRIPTION = 'What is the result of the expression?';
 const OPERATIONS = ['+', '-', '*'];
-
-const { generateRandomNumber } = helper;
 
 const calculate = (num1, num2, operation) => {
   switch (operation) {

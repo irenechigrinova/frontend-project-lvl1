@@ -1,9 +1,7 @@
-import helper from '../helpers.js';
+import generateRandomNumber from '../helpers/generate-random-number.js';
 import runGame from '../index.js';
 
 const DESCRIPTION = 'What number is missing in the progression?';
-
-const { generateRandomNumber } = helper;
 
 const generateProgression = (start, length, step) => {
   const result = [];
