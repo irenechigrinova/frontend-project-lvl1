@@ -10,19 +10,23 @@
 - Для запуска игры через Nodejs необходимо выполнить команду node bin/your-game.js, где вместо your-game указать файл выбранной игры
 - Для запуска игры через команду make необходимо выполнить make file-name
 
-### Список доступных команд для NodeJS
-- node bin/brain-even.js (запуск игры "Чёт/Нечёт")
-- node bin/brain-calc.js (запуск игры "Калькулятор")
-- node bin/brain-gcd.js (запуск игры "Наименьший общий делитель)"
-- node bin/brain-progression.js (запуск игры "Прогрессия")
-- node bin/brain-prime.js (запуск игры "Простое число")
+```sh
+# setup
+npm ci
 
-### Список доступных make команд
-- make brain-even.js (запуск игры "Чёт/Нечёт")
-- make brain-calc.js (запуск игры "Калькулятор")
-- make brain-gcd.js (запуск игры "Наименьший общий делитель)"
-- make brain-progression.js (запуск игры "Прогрессия")
-- make brain-prime.js (запуск игры "Простое число")
+# run via make
+make brain-even
+
+# run via nodejs
+node bin/brain-even.js
+```
+
+### Список доступных игр
+- brain-even.js (Игра "Чёт/Нечёт")
+- brain-calc.js (Игра "Калькулятор")
+- brain-gcd.js (Игра "Наименьший общий делитель)"
+- brain-progression.js (Игра "Прогрессия")
+- brain-prime.js (Игра "Простое число")
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/irenechigrinova/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/irenechigrinova/frontend-project-lvl1/actions)

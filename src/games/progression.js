@@ -1,11 +1,12 @@
 import { generateRandomNumber } from '../helpers.js';
+import runGame from '../index.js';
+
+const DESCRIPTION = 'What number is missing in the progression?';
 
 const generateProgression = (start, length, step) => {
   const result = [];
-  let currentValue = start;
   for (let i = 0; i < length; i += 1) {
-    currentValue = i === 0 ? currentValue : currentValue + step;
-    result.push(currentValue);
+    result[i] = start + (step * i);
   }
   return result;
 };
@@ -26,8 +27,6 @@ const generateQuestionData = () => {
   };
 };
 
-export default () => ({
-  ruleText: 'What number is missing in the progression?',
-  maxAttempts: 3,
-  generateQuestionData,
-});
+export default () => {
+  runGame(DESCRIPTION, generateQuestionData);
+};

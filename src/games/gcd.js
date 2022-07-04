@@ -1,8 +1,11 @@
 import { generateRandomNumber } from '../helpers.js';
+import runGame from '../index.js';
 
-const getGDC = (number1, number2, start) => {
+const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
+
+const getGDC = (number1, number2) => {
   let gcd = 1;
-  for (let i = start; i >= 1; i -= 1) {
+  for (let i = number1; i >= 1; i -= 1) {
     if (number1 % i === 0 && number2 % i === 0) {
       gcd = i;
       break;
@@ -14,17 +17,15 @@ const getGDC = (number1, number2, start) => {
 const generateQuestionData = () => {
   const number1 = generateRandomNumber(1, 100);
   const number2 = generateRandomNumber(1, 100);
-  const min = Math.min(number1, number2);
-  const max = Math.max(number1, number2);
+  const first = Math.min(number1, number2);
+  const second = Math.max(number1, number2);
 
   return {
-    question: `${min} ${max}`,
-    answer: String(getGDC(number1, number2, min)),
+    question: `${first} ${second}`,
+    answer: String(getGDC(first, second)),
   };
 };
 
-export default () => ({
-  ruleText: 'Find the greatest common divisor of given numbers.',
-  maxAttempts: 3,
-  generateQuestionData,
-});
+export default () => {
+  runGame(DESCRIPTION, generateQuestionData);
+};

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import initGame from '../src/index.js';
-import generateIsEvenData from '../src/games/is-even.js';
+import startEvenGame from '../src/games/is-even.js';
 
-initGame(generateIsEvenData);
+startEvenGame();

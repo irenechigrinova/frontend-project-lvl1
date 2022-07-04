@@ -1,19 +1,24 @@
-import { generateRandomNumber, checkIsEven } from '../helpers.js';
+import { generateRandomNumber } from '../helpers.js';
+import runGame from '../index.js';
 
-const checkIsPrime = (number) => {
-  let isPrime = true;
+const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+const isPrime = (number) => {
+  if (number === 1) return false;
+
+  let result = true;
   for (let i = 3; i < number; i += 2) {
     if (number % i === 0) {
-      isPrime = false;
+      result = false;
       break;
     }
   }
-  return isPrime;
+  return result;
 };
 
 const generateQuestionData = () => {
   const number = generateRandomNumber(1, 100);
-  if (number === 1 || checkIsEven(number)) {
+  if (number % 2 === 0) {
     return {
       question: number,
       answer: 'no',
@@ -21,13 +26,11 @@ const generateQuestionData = () => {
   }
 
   return {
-    question: number,
-    answer: checkIsPrime(number) ? 'yes' : 'no',
+    question: String(number),
+    answer: isPrime(number) ? 'yes' : 'no',
   };
 };
 
-export default () => ({
-  ruleText: 'Answer "yes" if given number is prime. Otherwise answer "no".',
-  maxAttempts: 3,
-  generateQuestionData,
-});
+export default () => {
+  runGame(DESCRIPTION, generateQuestionData);
+};
