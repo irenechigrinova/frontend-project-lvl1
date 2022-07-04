@@ -24,6 +24,7 @@ const generateQuestionData = () => {
   return {
     question: progression.join(' '),
     answer: String(progressionMissingValue),
+    error: null,
   };
 };
 

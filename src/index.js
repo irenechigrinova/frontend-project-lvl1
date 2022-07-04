@@ -12,7 +12,7 @@ export default (description, generateQuestionData) => {
 
   for (let i = MAX_ATTEMPTS; i > 0; i -= 1) {
     const { question, answer, error } = generateQuestionData();
-    if (error && error.message) {
+    if (error) {
       console.log(`Oops, we've got an error: ${error.message}. Please, restart the game.`);
       process.exit();
     }

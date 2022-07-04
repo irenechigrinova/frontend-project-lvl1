@@ -10,6 +10,7 @@ const generateQuestionData = () => {
   return {
     question: String(number),
     answer: isEven(number) ? 'yes' : 'no',
+    error: null,
   };
 };
 

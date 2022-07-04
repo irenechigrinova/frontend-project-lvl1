@@ -25,7 +25,7 @@ const generateQuestionData = () => {
   return {
     question: `${number1} ${operation} ${number2}`,
     answer: String(result),
-    error: typeof result === 'object' ? result : {},
+    error: typeof result === 'object' ? result : null,
   };
 };
 

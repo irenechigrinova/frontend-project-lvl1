@@ -23,6 +23,7 @@ const generateQuestionData = () => {
   return {
     question: `${first} ${second}`,
     answer: String(getGDC(first, second)),
+    error: null,
   };
 };
 
