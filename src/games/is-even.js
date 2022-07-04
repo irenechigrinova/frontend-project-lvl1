@@ -1,7 +1,9 @@
-import { generateRandomNumber } from '../helpers.js';
+import helper from '../helpers.js';
 import runGame from '../index.js';
 
 const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const { generateRandomNumber } = helper;
 
 const isEven = (n) => n % 2 === 0;
 
@@ -10,7 +12,6 @@ const generateQuestionData = () => {
   return {
     question: String(number),
     answer: isEven(number) ? 'yes' : 'no',
-    error: null,
   };
 };
 

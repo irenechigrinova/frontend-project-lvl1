@@ -1,8 +1,10 @@
-import { generateRandomNumber } from '../helpers.js';
+import helper from '../helpers.js';
 import runGame from '../index.js';
 
 const DESCRIPTION = 'What is the result of the expression?';
 const OPERATIONS = ['+', '-', '*'];
+
+const { generateRandomNumber } = helper;
 
 const calculate = (num1, num2, operation) => {
   switch (operation) {
@@ -13,7 +15,7 @@ const calculate = (num1, num2, operation) => {
     case '+':
       return num1 + num2;
     default:
-      return new Error(`Unknown operation: '${operation}'!`);
+      throw new Error(`Unknown operation: '${operation}'!`);
   }
 };
 
@@ -25,7 +27,6 @@ const generateQuestionData = () => {
   return {
     question: `${number1} ${operation} ${number2}`,
     answer: String(result),
-    error: typeof result === 'object' ? result : null,
   };
 };
 

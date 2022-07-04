@@ -1,7 +1,9 @@
-import { generateRandomNumber } from '../helpers.js';
+import helper from '../helpers.js';
 import runGame from '../index.js';
 
 const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
+
+const { generateRandomNumber } = helper;
 
 const getGDC = (number1, number2) => {
   let gcd = 1;
@@ -23,7 +25,6 @@ const generateQuestionData = () => {
   return {
     question: `${first} ${second}`,
     answer: String(getGDC(first, second)),
-    error: null,
   };
 };
 
