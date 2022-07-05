@@ -11,7 +11,7 @@ const generateProgression = (start, length, step) => {
   return result;
 };
 
-const generateQuestionData = () => {
+const generateGameData = () => {
   const progressionLength = generateRandomNumber(5, 10);
   const progressionMissingIndex = generateRandomNumber(0, progressionLength - 1);
   const progressionStep = generateRandomNumber(1, 10);
@@ -28,5 +28,5 @@ const generateQuestionData = () => {
 };
 
 export default () => {
-  runGame(DESCRIPTION, generateQuestionData);
+  runGame(DESCRIPTION, generateGameData);
 };

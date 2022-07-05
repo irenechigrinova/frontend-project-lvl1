@@ -1,3 +1,7 @@
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/irenechigrinova/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/irenechigrinova/frontend-project-lvl1/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0ef5fc5dd27afa30a8de/maintainability)](https://codeclimate.com/github/irenechigrinova/frontend-project-lvl1/maintainability)
+
 ### Описание проекта
 В проекте содержится ряд математических игр, в которые пользователь может играть через консоль
 
@@ -30,12 +34,6 @@ node bin/brain-even.js
 - brain-gcd.js (Игра "Наименьший общий делитель)"
 - brain-progression.js (Игра "Прогрессия")
 - brain-prime.js (Игра "Простое число")
-
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/irenechigrinova/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/irenechigrinova/frontend-project-lvl1/actions)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-
 
 ### ASCIINEMA
 Even: https://asciinema.org/connect/666a1229-5d73-4ef8-b0cf-ed93b6246293

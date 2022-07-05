@@ -17,10 +17,10 @@ const calculate = (num1, num2, operation) => {
   }
 };
 
-const generateQuestionData = () => {
+const generateGameData = () => {
   const number1 = generateRandomNumber(0, 100);
   const number2 = generateRandomNumber(0, 100);
-  const operation = OPERATIONS[generateRandomNumber(0, 2)];
+  const operation = OPERATIONS[generateRandomNumber(0, OPERATIONS.length - 1)];
   const result = calculate(number1, number2, operation);
   return {
     question: `${number1} ${operation} ${number2}`,
@@ -29,5 +29,5 @@ const generateQuestionData = () => {
 };
 
 export default () => {
-  runGame(DESCRIPTION, generateQuestionData);
+  runGame(DESCRIPTION, generateGameData);
 };

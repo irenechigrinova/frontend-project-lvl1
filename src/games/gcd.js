@@ -14,7 +14,7 @@ const getGDC = (number1, number2) => {
   return gcd;
 };
 
-const generateQuestionData = () => {
+const generateGameData = () => {
   const number1 = generateRandomNumber(1, 100);
   const number2 = generateRandomNumber(1, 100);
   const first = Math.min(number1, number2);
@@ -27,5 +27,5 @@ const generateQuestionData = () => {
 };
 
 export default () => {
-  runGame(DESCRIPTION, generateQuestionData);
+  runGame(DESCRIPTION, generateGameData);
 };

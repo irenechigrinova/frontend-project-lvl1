@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 
 const MAX_ATTEMPTS_COUNT = 3;
 
-export default (description, generateQuestionData) => {
+export default (description, generateGameData) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = readlineSync.question('May I have your name? ');
@@ -12,7 +12,7 @@ export default (description, generateQuestionData) => {
 
   for (let i = MAX_ATTEMPTS_COUNT; i > 0; i -= 1) {
     try {
-      const { question, answer } = generateQuestionData();
+      const { question, answer } = generateGameData();
       console.log(`Question: ${question}`);
 
       const userAnswer = readlineSync.question('Your answer: ');
